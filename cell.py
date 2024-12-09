@@ -22,7 +22,7 @@ class Cell:
         self._x2 = None
         self._y2 = None
         self._win = win
-        self.visited = False
+        self._visited = False
 
     def draw(
             self,
