@@ -8,8 +8,8 @@ class Line:
         self._point2 = point2
 
     def draw(self, canvas, fill_color="black"):
-        print(f"Point 1: ({self._point1.x}, {self._point1.y})")
-        print(f"Point 2: ({self._point2.x}, {self._point2.y})")
+        # print(f"Point 1: ({self._point1.x}, {self._point1.y})")
+        # print(f"Point 2: ({self._point2.x}, {self._point2.y})")
         canvas.create_line(
                     self._point1.x,
                     self._point1.y,
