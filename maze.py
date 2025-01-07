@@ -74,11 +74,3 @@ class Maze:
             bottom_right_cell._x2,
             bottom_right_cell._y2,
         )
-    
-    # def _break_walls_r(self, i, j):
-    #     current_cell = self._cells[i][j]
-    #     current_cell.visited = True
-    #     while True:
-    #         to_visit = []
-
-            
