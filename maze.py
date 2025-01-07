@@ -1,3 +1,4 @@
+import random
 import time
 from cell import Cell
 
@@ -10,7 +11,8 @@ class Maze:
             num_cols, 
             cell_size_x, 
             cell_size_y, 
-            win=None
+            win=None,
+            seed=None
             ):
         self._cells = []
         self._x1 = x1
@@ -22,9 +24,10 @@ class Maze:
         self._win = win
         self._create_cells()
         self.break_entrance_and_exit()
+        if seed is not None:
+            random.seed(seed)
 
     def _create_cells(self):
-        # Populate matrix
         for i in range(self._num_cols):
             col_cells = []
             for j in range(self._num_rows):
@@ -34,7 +37,6 @@ class Maze:
             for j in range(self._num_rows):
                 self._draw_cell(i, j)
 
-    # Something is wrong here
     def _draw_cell(self, i, j):
         if self._win is None:
             return
@@ -74,3 +76,13 @@ class Maze:
             bottom_right_cell._x2,
             bottom_right_cell._y2,
         )
+
+    def _break_walls_r(self, i, j):
+        self._cells[i][j].visited = True
+        while True:
+            to_visit = []
+            # check cells adjacent to the current cell. Keep track of any that have not been visited as 'possible directions' to move to
+            # if there are zero directions you can go from the current cell, draw the current cell and return to break out of the loop
+            # otherwise choose a random direction
+            # knock down walls between the current and chosen cell
+            # move to the chosen cell by recursively calling _break_walls_r
